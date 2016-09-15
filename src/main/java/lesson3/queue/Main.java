@@ -22,7 +22,7 @@ public class Main {
             while(true) {
                 Integer i = Integer.parseInt(in.nextLine());
                 queue.put(i * 1000);
-                System.out.println("Producer = " + i*1000);
+                System.out.println("StudentProducer = " + i*1000);
             }
        } finally {
             //consumer.interrupt();
