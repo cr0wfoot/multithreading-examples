@@ -1,25 +1,25 @@
-package committee;
+package com.example.multithreading.committee;
 
-import committee.faculties.BioFaculty;
-import committee.faculties.MathFaculty;
-import committee.faculties.MixFaculty;
+import com.example.multithreading.committee.faculties.BioFaculty;
+import com.example.multithreading.committee.faculties.MathFaculty;
+import com.example.multithreading.committee.faculties.MixFaculty;
 
 import java.util.concurrent.Semaphore;
 
 public class Main {
 
-	public static void main(String[] args) throws InterruptedException {
-		Semaphore fac = new Semaphore(1);
-		Semaphore prod = new Semaphore(2);
-		Queue q = new Queue(prod);
-		StudentProducer p = new StudentProducer(q, prod);
-		MixFaculty mx = new MixFaculty(q, fac);
-		MathFaculty mt = new MathFaculty(q, fac);
-		BioFaculty bi = new BioFaculty(q, fac);
-		p.start();
-		mx.start();
-		mt.start();
-		bi.start();
-	}
+    public static void main(String[] args) {
+        Semaphore facultySemaphore = new Semaphore(1);
+        Semaphore producerSemaphore = new Semaphore(2);
+        Queue queue = new Queue(producerSemaphore);
+        StudentProducer studentProducer = new StudentProducer(queue, producerSemaphore);
+        MixFaculty mixFaculty = new MixFaculty(queue, facultySemaphore);
+        MathFaculty mathFaculty = new MathFaculty(queue, facultySemaphore);
+        BioFaculty bioFaculty = new BioFaculty(queue, facultySemaphore);
 
+        studentProducer.start();
+        mixFaculty.start();
+        mathFaculty.start();
+        bioFaculty.start();
+    }
 }
