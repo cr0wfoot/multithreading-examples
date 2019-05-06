@@ -1,15 +1,14 @@
-package patterns.readerwriter;
+package com.example.multithreading.patterns.readerwriter;
 
-public class Store {
-    
+class Store {
+
     private static String message = "Message number 0";
-    
-    public static void changeMessage(String message) {
+
+    static void changeMessage(String message) {
         Store.message = message;
     }
-    
-    public static String getMessage() {
+
+    static String getMessage() {
         return message;
     }
-    
 }

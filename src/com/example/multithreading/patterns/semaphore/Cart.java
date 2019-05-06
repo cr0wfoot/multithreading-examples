@@ -1,19 +1,18 @@
-package patterns.semaphore;
+package com.example.multithreading.patterns.semaphore;
 
-public class Cart {
-    
+class Cart {
+
     private static int weight = 0;
-    
-    public static void addWeight() {
+
+    static void increaseWeight() {
         weight--;
     }
-    
-    public static void reduceWeight() {
+
+    static void reduceWeight() {
         weight++;
     }
-    
-    public static int getWeight() {
+
+    static int getWeight() {
         return weight;
     }
-    
 }

@@ -1,11 +1,9 @@
-package patterns.producerconcumer;
+package com.example.multithreading.patterns.producerconcumer;
 
-public class Product {
-    
-    public int time;
-    
-    public Product(int time) {
+class Product {
+
+    int time;
+    Product(int time) {
         this.time = time;
     }
-    
 }

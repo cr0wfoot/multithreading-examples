@@ -1,29 +1,28 @@
-package patterns.producerconcumer;
+package com.example.multithreading.patterns.producerconcumer;
 
 public class CpuConsumer extends Thread {
-    
-    Queue queue;
 
-    public CpuConsumer(Queue queue) {
+    private Queue queue;
+
+    CpuConsumer(Queue queue) {
         this.queue = queue;
     }
-    
+
     @Override
     public void run() {
-        while(!isInterrupted()) {
+        while (!isInterrupted()) {
             Product item = queue.pull(getName());
-            if(item != null) {
+            if (item != null) {
                 try {
                     System.out.println(getName() + " took product number " + item.time);
-                    Thread.sleep(item.time);
+                    sleep(item.time);
                 } catch (InterruptedException ex) {
-                   return;
+                    return;
                 }
             } else {
                 System.out.println(getName() + " got null");
-                Thread.yield();
+                yield();
             }
         }
     }
-    
 }

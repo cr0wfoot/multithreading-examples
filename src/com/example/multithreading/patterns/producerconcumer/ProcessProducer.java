@@ -1,25 +1,24 @@
-package patterns.producerconcumer;
+package com.example.multithreading.patterns.producerconcumer;
 
 public class ProcessProducer extends Thread {
-    
-    Queue queue;
-    int i = 0;
-    
-    public ProcessProducer(Queue queue) {
+
+    private Queue queue;
+    private int i = 0;
+
+    ProcessProducer(Queue queue) {
         this.queue = queue;
     }
-    
+
     @Override
     public void run() {
-        while(!isInterrupted()) {
+        while (!isInterrupted()) {
             i++;
             queue.push(new Product(i));
             try {
-                Thread.sleep(700);
+                sleep(700);
             } catch (InterruptedException ex) {
                 return;
             }
         }
     }
-    
 }
